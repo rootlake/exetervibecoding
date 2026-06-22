@@ -1,0 +1,24 @@
+{
+  "meta": {
+    "unit": "Quadratic Functions",
+    "course": "Algebra II",
+    "assessment": "Unit 4 Test",
+    "totalPoints": 100,
+    "sanitized": true
+  },
+  "objectives": [
+    { "id": "O1", "text": "Graph parabolas from vertex and standard form", "weight": 20 },
+    { "id": "O2", "text": "Find roots using factoring and the quadratic formula", "weight": 25 },
+    { "id": "O3", "text": "Model real-world problems with quadratics", "weight": 20 },
+    { "id": "O4", "text": "Compare transformations of the parent function", "weight": 15 },
+    { "id": "O5", "text": "Analyze domain and range", "weight": 10 },
+    { "id": "O6", "text": "Solve systems with one linear and one quadratic equation", "weight": 10 }
+  ],
+  "sections": [
+    { "name": "Multiple choice (12 items)", "points": 24, "mapsTo": ["O1", "O2", "O4"] },
+    { "name": "Vocabulary & definitions", "points": 16, "mapsTo": [] },
+    { "name": "Graphing (3 problems)", "points": 36, "mapsTo": ["O1", "O4"] },
+    { "name": "Word problem — projectile motion", "points": 14, "mapsTo": ["O3"] },
+    { "name": "Free response — systems", "points": 10, "mapsTo": ["O6"] }
+  ]
+}

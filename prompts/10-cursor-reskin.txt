@@ -1,0 +1,4 @@
+Sweep demos/assessment-fairness.html and demos/game-generator.html so every color and font matches the deck tokens:
+- white #FFFFFF, soft #FAFAFA, ink #111, line rgba(0,0,0,0.12), accent #8C1D18
+- Source Serif 4 titles, Inter body, JetBrains Mono labels
+- thin 1px borders, no navy/gold from the admissions deck

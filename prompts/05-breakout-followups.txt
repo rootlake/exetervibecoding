@@ -1,0 +1,20 @@
+Breakout debrief — facilitation prompts (10–15 min)
+
+WORKED
+- What came together in under 10 minutes?
+- Which tool (ChatGPT, Claude, Gemini) felt best for your prompt? Why?
+- Did anyone get something they'd actually use next week?
+
+BROKE
+- Where did the AI misunderstand your intent?
+- What did you have to rewrite by hand?
+- Did layout, colors, or interactivity fail?
+
+SURPRISED
+- Anything better than you expected?
+- Any tool do something the others couldn't?
+- Ethics or fairness concerns come up?
+
+BRIDGE TO CURSOR
+- "Canvas gave you a one-file draft. Cursor lets you split HTML + data + iterate across a whole folder."
+- Show game-generator.html as the multi-file version of what they tried in Canvas.

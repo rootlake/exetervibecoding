@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="description" content="Vocab, principles, and cheat sheet from Vibe Coding for Educators — Exeter 2026.">
+<title>Takeaways · Vibe Coding for Educators</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Source+Serif+4:wght@600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #FFFFFF;
+  --bg-soft: #FAFAFA;
+  --ink: #111111;
+  --line: rgba(0,0,0,0.12);
+  --accent: #8C1D18;
+  --muted: #5C5C5C;
+  --safe-bottom: env(safe-area-inset-bottom, 0px);
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  font-family: 'Inter', system-ui, sans-serif;
+  background: var(--bg-soft);
+  color: var(--ink);
+  line-height: 1.45;
+  padding-bottom: calc(1.5rem + var(--safe-bottom));
+}
+.hero {
+  background: var(--bg);
+  color: var(--ink);
+  padding: 1.75rem 1.25rem 1.5rem;
+  border-bottom: 1px solid var(--line);
+}
+.hero .tag {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.06em;
+  color: var(--accent);
+}
+.hero h1 {
+  font-family: 'Source Serif 4', Georgia, serif;
+  font-size: clamp(1.75rem, 5vw, 2.25rem);
+  font-weight: 600;
+  margin-top: 0.5rem;
+  line-height: 1.1;
+}
+.hero p {
+  font-size: 0.95rem;
+  color: var(--muted);
+  margin-top: 0.65rem;
+  max-width: 36rem;
+}
+main { max-width: 640px; margin: 0 auto; padding: 1.25rem 1rem 0; }
+.section-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.68rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin: 1.5rem 0 0.75rem;
+}
+.vocab-grid { display: grid; gap: 0.55rem; }
+.vocab-item {
+  background: var(--bg);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 0.85rem 1rem;
+}
+.vocab-item dt {
+  font-weight: 700;
+  font-size: 0.92rem;
+  color: var(--accent);
+}
+.vocab-item dd {
+  font-size: 0.88rem;
+  color: var(--muted);
+  margin-top: 0.2rem;
+  line-height: 1.4;
+}
+.principle {
+  background: var(--bg);
+  border: 1px solid var(--line);
+  border-left: 3px solid var(--accent);
+  border-radius: 8px;
+  padding: 0.9rem 1rem;
+  margin-bottom: 0.55rem;
+  font-size: 0.9rem;
+  line-height: 1.45;
+}
+.principle strong { color: var(--ink); }
+.help-step {
+  display: flex;
+  gap: 0.75rem;
+  align-items: baseline;
+  background: var(--bg);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 0.85rem 1rem;
+  margin-bottom: 0.5rem;
+  font-size: 0.88rem;
+  line-height: 1.45;
+}
+.help-step .n {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.75rem;
+  color: var(--accent);
+  font-weight: 500;
+  flex: none;
+}
+.panel-mini {
+  background: #0D1117;
+  border: 1px solid rgba(0,0,0,.2);
+  border-radius: 8px;
+  overflow: hidden;
+  margin-top: 0.75rem;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.72rem;
+  line-height: 1.5;
+  color: #E6EDF3;
+}
+.panel-mini .bar {
+  padding: 0.45rem 0.65rem;
+  border-bottom: 1px solid #1C2230;
+  color: #8B949E;
+  font-size: 0.65rem;
+}
+.panel-mini pre {
+  margin: 0;
+  padding: 0.65rem 0.75rem;
+  white-space: pre-wrap;
+  color: #E6EDF3;
+}
+.panel-mini .err { color: #E06C5A; }
+.panel-mini .cm { color: #8B949E; }
+.panel-mini .st { color: #9DC3A0; }
+.nav-grid { display: grid; gap: 0.5rem; }
+.nav-grid a {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  background: var(--bg);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 0.85rem 1rem;
+  text-decoration: none;
+  color: var(--ink);
+  font-size: 0.9rem;
+}
+.nav-grid a span.lbl { font-weight: 500; }
+.nav-grid a span.go {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.72rem;
+  color: var(--accent);
+  flex-shrink: 0;
+}
+.nav-grid a.demo { border-left: 3px solid var(--accent); }
+.cta-primary {
+  display: block;
+  text-align: center;
+  background: var(--accent);
+  color: #fff;
+  font-weight: 600;
+  font-size: 1rem;
+  padding: 1rem 1.25rem;
+  border-radius: 8px;
+  text-decoration: none;
+  margin: 1.25rem 0 0.5rem;
+  border: 1px solid var(--accent);
+}
+footer {
+  text-align: center;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.65rem;
+  color: var(--muted);
+  padding: 2rem 1rem 1rem;
+  line-height: 1.6;
+}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <p class="tag">// Teaching in the Age of AI · Exeter 2026</p>
+  <h1>Vibe Coding Cheat Sheet</h1>
+  <p>Vocab from the workshop, core principles, and how to get help from the bot when something breaks.</p>
+</header>
+
+<main>
+
+  <p class="section-label">Vocab we learned</p>
+  <dl class="vocab-grid">
+    <div class="vocab-item"><dt>Vibe coding</dt><dd>Describe what you want in plain English; the AI writes the code. You stay the teacher — and the judge.</dd></div>
+    <div class="vocab-item"><dt>Canvas / Artifacts</dt><dd>ChatGPT Canvas, Claude Artifacts, Gemini Canvas — in-browser spaces where the model drafts HTML, apps, and docs in one shot.</dd></div>
+    <div class="vocab-item"><dt>Sanitize</dt><dd>Strip names, essays, IDs, and gradebook faces before any data touches a public AI tool. Use structure &amp; aggregates only.</dd></div>
+    <div class="vocab-item"><dt>Fake data</dt><dd>Made-up demo content for building and presenting — swap in sanitized exports when you go live.</dd></div>
+    <div class="vocab-item"><dt>One-off HTML</dt><dd>A single file that opens in any browser — no backend, no server, no install.</dd></div>
+    <div class="vocab-item"><dt>Vanilla JS</dt><dd>Plain JavaScript without a framework — or add a CDN library (Chart.js, Leaflet) when you need it.</dd></div>
+    <div class="vocab-item"><dt>Teacher-readable labels</dt><dd>Plain English on every screen so you (and students) know what each part does.</dd></div>
+    <div class="vocab-item"><dt>Static link</dt><dd>A URL that serves your HTML/JS/CSS as files — no server code required.</dd></div>
+    <div class="vocab-item"><dt>Deploy</dt><dd>Publish your project so anyone with a link can open it in a browser.</dd></div>
+    <div class="vocab-item"><dt>IDE</dt><dd>Integrated development environment — Cursor is an IDE with a built-in AI agent that sees your whole project.</dd></div>
+    <div class="vocab-item"><dt>Repo / multi-file project</dt><dd>HTML + data + styles as separate files you version, iterate, and deploy together.</dd></div>
+    <div class="vocab-item"><dt>Handoff</dt><dd>Export from Claude Design (or similar) into a code workspace to refine in an IDE.</dd></div>
+    <div class="vocab-item"><dt>Vibe-rary</dt><dd>Card catalog of teacher-made builds — borrow prompts, remix for your unit.</dd></div>
+    <div class="vocab-item"><dt>Console</dt><dd>Browser DevTools tab (F12) where JavaScript errors appear in red — copy them verbatim for the bot.</dd></div>
+  </dl>
+
+  <p class="section-label">Core principles</p>
+  <div class="principle"><strong>You write requests, not syntax.</strong> The machine handles code; you handle pedagogy, fairness, and taste.</div>
+  <div class="principle"><strong>Sanitize before you prompt.</strong> Local tools first when real student data is involved; cloud LLMs only with sanitized structure.</div>
+  <div class="principle"><strong>Steal the pattern:</strong> DATA → VIEWS → STYLE → BUILD → LIBS → SHARE. Fill in your unit; reuse the skeleton.</div>
+  <div class="principle"><strong>Start one-off, level up when needed.</strong> Email a file → Netlify/Vercel/Lovable → GitHub Pages → Cursor for multi-file work.</div>
+  <div class="principle"><strong>Compare tools.</strong> Same prompt in ChatGPT, Claude, and Gemini — notice what each does differently.</div>
+  <div class="principle"><strong>Iterate conversationally.</strong> Build, test, paste errors back, refine — vibe coding is a loop, not a single shot.</div>
+  <div class="principle"><strong>Borrow freely, contribute back.</strong> The Vibe-rary and Co-Lab exist so teachers don't start alone.</div>
+
+  <p class="section-label">Getting help from the bot</p>
+  <div class="help-step"><span class="n">01</span><span><strong>Reproduce the bug</strong> — what did you click? What should have happened?</span></div>
+  <div class="help-step"><span class="n">02</span><span><strong>Open DevTools → Console</strong> (F12 or right-click → Inspect). Red text = the clue.</span></div>
+  <div class="help-step"><span class="n">03</span><span><strong>Copy the full error</strong> — message, file name, line number. Don't paraphrase.</span></div>
+  <div class="help-step"><span class="n">04</span><span><strong>Paste into Cursor</strong> (or your chat tool) with context: what you tried, what you expected, which file.</span></div>
+  <div class="help-step"><span class="n">05</span><span><strong>Apply the fix, refresh, retry.</strong> Loop until the console is clean.</span></div>
+  <div class="panel-mini">
+    <div class="bar">example prompt</div>
+    <pre><span class="st">When I click Start I get this console error:</span>
+
+<span class="err">Uncaught TypeError: Cannot read properties of null
+  (reading 'addEventListener') at game.js:47</span>
+
+<span class="st">Expected: board renders. Please fix game.js — vanilla JS only.</span></pre>
+  </div>
+  <p style="font-size:0.85rem;color:var(--muted);margin-top:0.75rem;line-height:1.45;">Avoid “it doesn't work.” The bot debugs better with <strong style="color:var(--ink);">exact errors + your intent</strong>. Same approach works for deploy steps — paste the terminal output.</p>
+
+  <a class="cta-primary" href="index.html">Open full slide deck ↗</a>
+
+  <p class="section-label">Live demos</p>
+  <nav class="nav-grid">
+    <a class="demo" href="https://rs31415.github.io/100YOSchart/"><span class="lbl">The Macondo Constellation (Ron Spalletta)</span><span class="go">open ↗</span></a>
+    <a class="demo" href="demos/assessment-fairness.html"><span class="lbl">Assessment Fairness Check</span><span class="go">open ↗</span></a>
+    <a class="demo" href="demos/game-generator.html"><span class="lbl">Dining Hall Tier List</span><span class="go">open ↗</span></a>
+    <a class="demo" href="https://rootlake.github.io/colabviberary/"><span class="lbl">The Vibe-rary</span><span class="go">open ↗</span></a>
+    <a class="demo" href="https://docs.google.com/document/d/1SvkT7TuIQvgFvG6HzgGbx_d80xCdPSDaNbh7ikZGRQQ/edit?tab=t.0#heading=h.ydcdrbx8k8xz"><span class="lbl">AI Co-Lab — Vibe Coding Lab</span><span class="go">open ↗</span></a>
+    <a class="demo" href="https://rootlake.github.io/StarField3D/"><span class="lbl">Star Field 3D (Cursor demo)</span><span class="go">open ↗</span></a>
+  </nav>
+
+  <p class="section-label">All slides</p>
+  <nav class="nav-grid">
+    <a href="index.html#/0"><span class="lbl">Intro</span><span class="go">1</span></a>
+    <a href="index.html#/1"><span class="lbl">Who Has Access?</span><span class="go">2</span></a>
+    <a href="index.html#/2"><span class="lbl">Built in Claude Design / Claude Code</span><span class="go">3</span></a>
+    <a href="index.html#/3"><span class="lbl">Vibe Coding?</span><span class="go">4</span></a>
+    <a href="index.html#/4"><span class="lbl">What Vibe Coding Can Do</span><span class="go">5</span></a>
+    <a href="index.html#/5"><span class="lbl">Sanitize When Using LLMs</span><span class="go">6</span></a>
+    <a href="index.html#/6"><span class="lbl">Same Prompt, Three Canvases</span><span class="go">7</span></a>
+    <a href="index.html#/7"><span class="lbl">Prompt with Vocab, Ask for Follow Up</span><span class="go">8</span></a>
+    <a href="index.html#/8"><span class="lbl">Claude Design → Claude Code</span><span class="go">9</span></a>
+    <a href="index.html#/9"><span class="lbl">Your Turn — Experiment</span><span class="go">10</span></a>
+    <a href="index.html#/10"><span class="lbl">Welcome Back</span><span class="go">11</span></a>
+    <a href="index.html#/11"><span class="lbl">Now What?</span><span class="go">12</span></a>
+    <a href="index.html#/12"><span class="lbl">Next Level: Cursor</span><span class="go">13</span></a>
+    <a href="index.html#/13"><span class="lbl">Try Cursor</span><span class="go">14</span></a>
+    <a href="index.html#/14"><span class="lbl">Fix It With the Bot</span><span class="go">15</span></a>
+    <a href="index.html#/15"><span class="lbl">Takeaways</span><span class="go">16</span></a>
+  </nav>
+
+</main>
+
+<footer>
+  Josh Lake · Pomfret School<br>
+  Teaching in the Age of AI · Phillips Exeter Academy
+</footer>
+
+</body>
+</html>

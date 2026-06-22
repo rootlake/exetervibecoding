@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Assessment Fairness Check — Demo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Source+Serif+4:wght@600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#fff;--bg-soft:#FAFAFA;--ink:#111;--line:rgba(0,0,0,.12);--accent:#8C1D18;--muted:#5C5C5C}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Inter,system-ui,sans-serif;background:var(--bg-soft);color:var(--ink);min-height:100vh}
+header{background:var(--bg);border-bottom:1px solid var(--line);padding:1.25rem 1.5rem}
+header h1{font-family:'Source Serif 4',Georgia,serif;font-size:1.65rem;font-weight:600}
+header .sub{font-size:.88rem;color:var(--muted);margin-top:.3rem}
+header .meta{font-family:'JetBrains Mono',monospace;font-size:.68rem;color:var(--accent);margin-top:.5rem}
+main{display:grid;grid-template-columns:minmax(280px,.95fr) 1.05fr;gap:1rem;padding:1rem 1.5rem 2rem;max-width:1400px;margin:0 auto;align-items:start}
+.paste-col{display:flex;flex-direction:column;gap:.85rem}
+.paste-block{background:var(--bg);border:1px solid var(--line);border-radius:8px;overflow:hidden}
+.paste-block .paste-head{display:flex;align-items:center;justify-content:space-between;padding:.55rem .75rem;border-bottom:1px solid var(--line);background:var(--bg-soft)}
+.paste-block .paste-head h2{font-family:'JetBrains Mono',monospace;font-size:.68rem;font-weight:500;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.paste-block .paste-head .hint{font-family:'JetBrains Mono',monospace;font-size:.62rem;color:var(--accent)}
+.paste-block textarea{width:100%;min-height:9.5rem;border:none;resize:vertical;padding:.75rem .85rem;font-family:'JetBrains Mono',monospace;font-size:.72rem;line-height:1.55;color:var(--ink);background:var(--bg)}
+.paste-block textarea:focus{outline:2px solid rgba(140,29,24,.35);outline-offset:-2px}
+.paste-note{font-family:'JetBrains Mono',monospace;font-size:.62rem;color:var(--muted);padding:0 .15rem;line-height:1.45}
+.results-col{display:flex;flex-direction:column;gap:1rem}
+.panel{background:var(--bg);border:1px solid var(--line);border-radius:8px;padding:1rem 1.15rem}
+.panel h2{font-family:'JetBrains Mono',monospace;font-size:.68rem;font-weight:500;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin-bottom:.85rem}
+.sec-list{list-style:none;display:flex;flex-direction:column;gap:.55rem}
+.sec-list li{font-size:.85rem;line-height:1.35;padding:.55rem .65rem;border:1px solid var(--line);border-radius:6px;display:flex;justify-content:space-between;gap:.75rem;align-items:flex-start}
+.sec-list .id{font-family:'JetBrains Mono',monospace;font-size:.72rem;color:var(--accent);flex:none;width:2rem}
+.sec-list .pts{font-family:'JetBrains Mono',monospace;font-size:.72rem;color:var(--accent);flex:none}
+.align-grid{display:flex;flex-direction:column;gap:.45rem;margin-bottom:1rem}
+.align-row{display:grid;grid-template-columns:1fr 72px 72px;gap:.5rem;align-items:center;font-size:.8rem;padding:.4rem 0;border-bottom:1px solid var(--line)}
+.align-row .bar-wrap{height:8px;background:var(--bg-soft);border:1px solid var(--line);border-radius:4px;overflow:hidden}
+.align-row .bar{height:100%;background:var(--accent);border-radius:3px}
+.align-row.miss .bar{background:transparent;border:1px dashed var(--accent)}
+.align-row.miss{color:var(--muted)}
+.issue-list{list-style:none;display:flex;flex-direction:column;gap:.5rem}
+.issue-list li{font-size:.82rem;line-height:1.4;padding:.55rem .65rem;border-radius:6px;border-left:3px solid var(--line);background:var(--bg-soft)}
+.issue-list li.high{border-left-color:var(--accent);background:#fdf5f5}
+.issue-list li.medium{border-left-color:#888}
+.issue-list li.low{border-left-color:var(--line)}
+.issue-list .sev{font-family:'JetBrains Mono',monospace;font-size:.65rem;text-transform:uppercase;color:var(--accent);display:block;margin-bottom:.2rem}
+.summary{display:flex;gap:1rem;margin-bottom:1rem;flex-wrap:wrap}
+.stat{flex:1;min-width:100px;border:1px solid var(--line);border-radius:6px;padding:.65rem .75rem;text-align:center}
+.stat .n{font-family:'Source Serif 4',serif;font-size:1.5rem;color:var(--accent)}
+.stat .l{font-size:.7rem;color:var(--muted);margin-top:.15rem}
+footer{text-align:center;font-family:'JetBrains Mono',monospace;font-size:.62rem;color:var(--muted);padding:1rem;border-top:1px solid var(--line);background:var(--bg)}
+@media(max-width:900px){main{grid-template-columns:1fr}}
+@media print{body{background:#fff}header .meta{color:#666}.paste-block textarea{min-height:auto}}
+</style>
+</head>
+<body>
+<header>
+<h1 id="title">Assessment Fairness Check</h1>
+<p class="sub" id="subtitle">Paste objectives + test outline — alignment gaps highlighted</p>
+<p class="meta" id="meta"></p>
+</header>
+<main>
+<section class="paste-col">
+<div class="paste-block">
+<div class="paste-head"><h2>Unit objectives</h2><span class="hint">paste here</span></div>
+<textarea id="objectivesPaste" readonly spellcheck="false" aria-label="Unit objectives paste area"></textarea>
+</div>
+<div class="paste-block">
+<div class="paste-head"><h2>Test outline</h2><span class="hint">paste here</span></div>
+<textarea id="sectionsPaste" readonly spellcheck="false" aria-label="Test outline paste area"></textarea>
+</div>
+<p class="paste-note">Demo uses pre-baked synthetic text — swap in your sanitized export in a real build.</p>
+</section>
+<section class="results-col">
+<div class="panel">
+<h2>Alignment &amp; issues</h2>
+<div class="summary" id="summary"></div>
+<div class="align-grid" id="alignment"></div>
+<h2>Flags</h2>
+<ul class="issue-list" id="issues"></ul>
+</div>
+<div class="panel">
+<h2>Parsed test sections</h2>
+<ul class="sec-list" id="sections"></ul>
+</div>
+</section>
+</main>
+<footer>Synthetic demo — no real student responses · objectives &amp; sections are illustrative</footer>
+<script src="data/assessment-demo-data.js"></script>
+<script>
+const d = ASSESSMENT_DEMO;
+document.getElementById('title').textContent = d.meta.assessment + ' — Fairness Check';
+document.getElementById('subtitle').textContent = d.meta.unit + ' · ' + d.meta.course;
+document.getElementById('meta').textContent = d.meta.totalPoints + ' points · sanitized structure only';
+
+const objLines = d.objectives.map(o => `${o.id} (${o.weight}%) — ${o.text}`);
+document.getElementById('objectivesPaste').value = objLines.join('\n');
+
+const secLines = d.sections.map(s => {
+  const maps = s.mapsTo.length ? s.mapsTo.join(', ') : 'unmapped';
+  return `${s.id}: ${s.name} — ${s.points} pts → ${maps}`;
+});
+document.getElementById('sectionsPaste').value = secLines.join('\n');
+
+const secEl = document.getElementById('sections');
+d.sections.forEach(s => {
+  const maps = s.mapsTo.length ? s.mapsTo.join(', ') : '— none —';
+  const li = document.createElement('li');
+  li.innerHTML = `<span class="id">${s.id}</span><span><strong>${s.name}</strong><br><small style="color:var(--muted)">→ ${maps}</small></span><span class="pts">${s.points} pts</span>`;
+  secEl.appendChild(li);
+});
+
+const high = d.issues.filter(i => i.severity === 'high').length;
+document.getElementById('summary').innerHTML = `
+  <div class="stat"><div class="n">${d.objectives.length}</div><div class="l">Objectives</div></div>
+  <div class="stat"><div class="n">${d.sections.length}</div><div class="l">Sections</div></div>
+  <div class="stat"><div class="n">${high}</div><div class="l">High flags</div></div>
+  <div class="stat"><div class="n">${d.alignment.filter(a => !a.covered).length}</div><div class="l">Uncovered</div></div>`;
+
+const alignEl = document.getElementById('alignment');
+const maxPts = Math.max(...d.alignment.map(a => a.points), 1);
+d.alignment.forEach(a => {
+  const row = document.createElement('div');
+  row.className = 'align-row' + (a.covered ? '' : ' miss');
+  const pct = Math.round((a.points / maxPts) * 100);
+  row.innerHTML = `<span>${a.label}</span><span>${a.points} pts</span><div class="bar-wrap"><div class="bar" style="width:${pct}%"></div></div>`;
+  alignEl.appendChild(row);
+});
+
+const issEl = document.getElementById('issues');
+d.issues.forEach(i => {
+  const li = document.createElement('li');
+  li.className = i.severity;
+  li.innerHTML = `<span class="sev">${i.severity}</span>${i.text}`;
+  issEl.appendChild(li);
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,18 @@
+Build a simple one-page assessment fairness checker I can open in my browser. Use the fake unit data below — no real student work, no names.
+
+Show:
+• Unit objectives with target weights
+• Test sections with point values and which objectives they map to
+• An alignment summary — which objectives have zero items, which sections are overweighted
+• A flagged-issues list (high / medium / low severity)
+
+Use this structure (fake demo data):
+
+Unit: Quadratic Functions, Algebra II, 100 points total.
+Objectives: graph parabolas (20%), find roots (25%), real-world models (20%), transformations (15%), domain & range (10%), linear-quadratic systems (10%).
+Sections: MC 24pts (O1,O2,O4), vocabulary 16pts (no objective), graphing 36pts (O1,O4), word problem 14pts (O3), free response 10pts (O6).
+Flag: O5 uncovered, vocabulary section unmapped, graphing overweighted.
+
+White background, thin black borders, Pomfret crimson (#8C1D18) for flags and accents. Chart.js optional for alignment bars. One HTML file, no backend.
+
+Footer: Synthetic demo — no real student responses.

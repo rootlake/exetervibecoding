@@ -1,0 +1,6 @@
+Remove all student names, IDs, and essay text from this grade export or assessment file.
+Output ONLY these structures as JSON I can paste into a public AI tool:
+- unit objectives (id + text + weight %)
+- test sections (name + point value + which objectives they map to)
+- rubric criteria (names and point weights only)
+No row-level student data. No essay content. No LMS user IDs.

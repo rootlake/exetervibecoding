@@ -1,0 +1,22 @@
+Build a classroom review game as a small multi-file project:
+
+demos/
+  game-generator.html    — main page, Jeopardy-style board
+  data/game-demo-data.js — categories, questions, answers (fake demo Q&A only)
+
+Requirements:
+- 4 categories × 4 questions (100–400 points), Algebra II quadratics topic
+- Click cell → modal with question → reveal answer
+- "Swap question set" button toggles between two pre-baked data sets in game-demo-data.js
+- Topic/grade selectors (static, from data)
+- Print-friendly board view
+
+Design tokens (match the talk deck):
+- white #FFFFFF, soft #FAFAFA, ink #111111
+- borders 1px rgba(0,0,0,0.12)
+- accent Pomfret crimson #8C1D18
+- fonts: Source Serif 4, Inter, JetBrains Mono
+
+Must work offline from file:// — CDN scripts only if needed, no backend.
+Demos load ONLY pre-computed fake data from game-demo-data.js — never real student content.
+Title: "Classroom Review Game — Demo"

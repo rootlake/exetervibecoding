@@ -1,0 +1,7 @@
+Build a simple one-page dining hall food tier list I can open in my browser. Keep it small and fast — I need this in a few minutes.
+
+Standard S · A · B · C · D · F tiers with the classic tier-list colors. Drag-and-drop items between tiers and an unranked pool at the bottom.
+
+Include the classics: chicken tenders, pizza, mac & cheese, cheeseburger, fries, grilled cheese, pasta bar, tacos, waffles, cereal, salad bar, ice cream, cookies, mystery meat — plus lobster and filet mignon.
+
+Clean and crafted — readable fonts, simple layout, no animation fluff. One HTML file, no backend — shareable link or email attachment.

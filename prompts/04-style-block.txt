@@ -1,0 +1,5 @@
+STYLE: white background (#FFFFFF), off-white panels (#FAFAFA), ink text (#111111).
+Borders: 1px solid rgba(0,0,0,0.12) — thin black lines, no heavy shadows.
+Accent: Pomfret crimson #8C1D18 for headers, flags, buttons, and highlights.
+Typography: Source Serif 4 for titles, Inter for body, JetBrains Mono for labels and code.
+Feel: clean, printable, conference handout — not dark mode, not boarding-school navy/gold.
